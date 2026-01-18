@@ -563,6 +563,297 @@ async def get_lesson(subject: str, topic: str):
 
 
 # ============================================================================
+# Printable Worksheets
+# ============================================================================
+
+class WorksheetRequest(BaseModel):
+    subject: Optional[str] = None
+    topic: Optional[str] = None
+    question_type: Optional[str] = None
+    count: int = 20
+    mode: str = "practice"  # "practice" or "mock"
+    randomize: bool = True
+    title: Optional[str] = None
+
+
+@app.post("/api/worksheets/generate")
+async def generate_worksheet(request: WorksheetRequest, db: Session = Depends(get_db)):
+    """Generate a printable HTML worksheet"""
+    from sqlalchemy.sql.expression import func
+    
+    # Build query
+    query = db.query(DBQuestion)
+    
+    if request.subject:
+        query = query.filter(DBQuestion.subject == request.subject)
+    
+    if request.question_type:
+        query = query.filter(DBQuestion.question_type == request.question_type)
+    
+    # Exclude NVR and comprehension (don't print well)
+    query = query.filter(DBQuestion.subject != "non_verbal_reasoning")
+    query = query.filter(DBQuestion.question_type != "comprehension")
+    
+    # Get questions
+    if request.randomize:
+        query = query.order_by(func.random())
+    
+    questions = query.limit(request.count).all()
+    
+    if not questions:
+        raise HTTPException(status_code=404, detail="No questions found matching criteria")
+    
+    # Generate title
+    if request.title:
+        title = request.title
+    elif request.question_type:
+        title = f"11+ {request.mode.title()}: {request.question_type.replace('_', ' ').title()}"
+    elif request.subject:
+        title = f"11+ {request.mode.title()}: {request.subject.replace('_', ' ').title()}"
+    else:
+        title = f"11+ {request.mode.title()} Worksheet"
+    
+    # Generate HTML
+    html = _generate_worksheet_html(questions, title, request.mode)
+    
+    return {"html": html, "question_count": len(questions), "title": title}
+
+
+def _generate_worksheet_html(questions: list, title: str, mode: str) -> str:
+    """Generate printable HTML worksheet"""
+    date_str = datetime.now().strftime("%d %B %Y")
+    
+    html = f"""<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{title}</title>
+    <style>
+        @media print {{
+            body {{ margin: 0; }}
+            .no-print {{ display: none; }}
+            .page-break {{ page-break-after: always; }}
+        }}
+
+        body {{
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.4;
+        }}
+
+        .header {{
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+        }}
+
+        .header h1 {{
+            margin: 0;
+            font-size: 24px;
+        }}
+
+        .header p {{
+            margin: 5px 0;
+            color: #666;
+        }}
+
+        .student-info {{
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }}
+
+        .student-info label {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }}
+
+        .student-info input {{
+            border: none;
+            border-bottom: 1px solid #333;
+            width: 150px;
+            padding: 5px;
+        }}
+
+        .question {{
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }}
+
+        .question-number {{
+            font-weight: bold;
+            color: #333;
+        }}
+
+        .question-text {{
+            margin: 10px 0;
+            font-size: 14px;
+        }}
+
+        .options {{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }}
+
+        .option {{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }}
+
+        .option-circle {{
+            width: 18px;
+            height: 18px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }}
+
+        .answer-section {{
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #333;
+        }}
+
+        .answer-section h2 {{
+            font-size: 16px;
+            margin-bottom: 15px;
+        }}
+
+        .answers {{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            font-size: 12px;
+        }}
+
+        .answer-item {{
+            padding: 5px;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }}
+
+        .instructions {{
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }}
+
+        .score-box {{
+            float: right;
+            border: 2px solid #333;
+            padding: 15px;
+            text-align: center;
+            min-width: 80px;
+        }}
+
+        .score-box .score {{
+            font-size: 24px;
+            font-weight: bold;
+        }}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{title}</h1>
+        <p>Date: {date_str} | Questions: {len(questions)} | Mode: {mode.title()}</p>
+    </div>
+
+    <div class="student-info no-print">
+        <label>Name: <input type="text" placeholder=""></label>
+        <label>Time: <input type="text" placeholder="__ minutes"></label>
+        <div class="score-box">
+            <div class="score">__/{len(questions)}</div>
+            <div>Score</div>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructions:</strong> Read each question carefully. Fill in the circle next to your chosen answer.
+        Work through all questions before checking your answers. {'Time yourself to simulate exam conditions.' if mode == 'mock' else 'Take your time and learn from each question.'}
+    </div>
+
+    <div class="questions">
+"""
+
+    for i, q in enumerate(questions, 1):
+        options = json.loads(q.options) if isinstance(q.options, str) else q.options if q.options else []
+        
+        # Clean up question text
+        question_text = q.question_text
+        if question_text.startswith('{'):
+            try:
+                parsed = json.loads(question_text)
+                question_text = parsed.get('question', parsed.get('instruction', question_text))
+            except:
+                pass
+
+        html += f"""
+        <div class="question">
+            <span class="question-number">Q{i}.</span>
+            <span class="question-type" style="color: #888; font-size: 11px;">({q.question_type.replace('_', ' ').title()})</span>
+            <div class="question-text">{question_text}</div>
+"""
+
+        if options:
+            html += """            <div class="options">
+"""
+            for j, opt in enumerate(options):
+                letter = chr(65 + j)
+                display_opt = str(opt)[:100] + "..." if len(str(opt)) > 100 else opt
+                html += f"""
+                <div class="option">
+                    <div class="option-circle"></div>
+                    <span><strong>{letter}.</strong> {display_opt}</span>
+                </div>
+"""
+            html += """            </div>
+"""
+
+        html += """        </div>
+"""
+
+    # Answer key
+    html += """
+    <div class="page-break"></div>
+    <div class="answer-section">
+        <h2>Answer Key (for parents - tear off before giving to child)</h2>
+        <div class="answers">
+"""
+
+    for i, q in enumerate(questions, 1):
+        options = json.loads(q.options) if isinstance(q.options, str) else q.options if q.options else []
+        if options and q.correct_index is not None:
+            correct_letter = chr(65 + q.correct_index)
+        else:
+            correct_letter = q.correct_answer[:10] if q.correct_answer else "N/A"
+
+        html += f"""
+            <div class="answer-item">
+                <strong>Q{i}:</strong> {correct_letter}
+            </div>
+"""
+
+    html += """
+        </div>
+    </div>
+</body>
+</html>
+"""
+    
+    return html
+
+
+# ============================================================================
 # Run
 # ============================================================================
 

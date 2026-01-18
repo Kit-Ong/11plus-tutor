@@ -19,6 +19,7 @@ import {
   Route,
   HelpCircle,
   Sparkles,
+  Printer,
 } from "lucide-react";
 
 export default function Sidebar() {
@@ -30,6 +31,7 @@ export default function Sidebar() {
       items: [
         { name: "Dashboard", href: "/", icon: LayoutDashboard },
         { name: "Practice Questions", href: "/practice", icon: Target },
+        { name: "Printable Worksheets", href: "/worksheets", icon: Printer },
         { name: "Getting Started", href: "/getting-started", icon: Sparkles },
       ],
     },
