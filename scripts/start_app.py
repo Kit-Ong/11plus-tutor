@@ -114,7 +114,7 @@ def start_frontend():
     # Check if node_modules exists
     if not (FRONTEND_DIR / "node_modules").exists():
         print("  Installing frontend dependencies...")
-        subprocess.run(["npm", "install"], cwd=FRONTEND_DIR, check=True)
+        subprocess.run(["npm", "install"], cwd=FRONTEND_DIR, check=True, shell=True)
 
     env = os.environ.copy()
     env["PORT"] = str(FRONTEND_PORT)
@@ -124,6 +124,7 @@ def start_frontend():
         ["npm", "run", "dev", "--", "-p", str(FRONTEND_PORT)],
         cwd=FRONTEND_DIR,
         env=env,
+        shell=True,
     )
     processes.append(process)
     return process
