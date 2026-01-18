@@ -19,13 +19,12 @@ if not exist "scripts\start_app.py" (
 
 echo.
 echo Starting 11+ Tutor...
-echo Opening http://localhost:3783 in your browser...
+echo Please wait while services start...
 echo.
 echo Press Ctrl+C to stop
 echo.
-start "" http://localhost:3783
 
-REM Run the app
+REM Run the app (browser will open automatically when ready)
 python scripts/start_app.py
 
 REM Pause only if the app crashed

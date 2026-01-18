@@ -169,8 +169,47 @@ def main():
 
     # Start services
     backend = start_backend()
-    time.sleep(2)  # Give backend time to start
+    
+    # Wait for backend to be ready
+    print("  Waiting for backend to be ready...")
+    import socket
+    backend_ready = False
+    for i in range(30):
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                if s.connect_ex(('localhost', BACKEND_PORT)) == 0:
+                    backend_ready = True
+                    print(f"  ✓ Backend is ready!")
+                    break
+        except:
+            pass
+        time.sleep(1)
+    
+    if not backend_ready:
+        print(f"  Warning: Backend did not start within 30 seconds")
+    
     frontend = start_frontend()
+    
+    # Wait for frontend to be ready
+    print("  Waiting for frontend to be ready...")
+    frontend_ready = False
+    for i in range(60):
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                if s.connect_ex(('localhost', FRONTEND_PORT)) == 0:
+                    frontend_ready = True
+                    print(f"  ✓ Frontend is ready!")
+                    break
+        except:
+            pass
+        time.sleep(1)
+    
+    if frontend_ready:
+        print("  Opening browser...")
+        import webbrowser
+        webbrowser.open(f"http://localhost:{FRONTEND_PORT}")
+    else:
+        print(f"  Warning: Frontend did not start within 60 seconds")
 
     print(f"""
 ╔══════════════════════════════════════════════════════════════════════════════╗
