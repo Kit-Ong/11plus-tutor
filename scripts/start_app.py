@@ -111,17 +111,19 @@ def start_frontend():
     if not check_port(FRONTEND_PORT):
         print(f"  Warning: Port {FRONTEND_PORT} is already in use")
 
+    npm_cmd = "npm.cmd" if os.name == "nt" else "npm"
+    
     # Check if node_modules exists
     if not (FRONTEND_DIR / "node_modules").exists():
         print("  Installing frontend dependencies...")
-        subprocess.run(["npm", "install"], cwd=FRONTEND_DIR, check=True)
+        subprocess.run([npm_cmd, "install"], cwd=FRONTEND_DIR, check=True)
 
     env = os.environ.copy()
     env["PORT"] = str(FRONTEND_PORT)
     env["NEXT_PUBLIC_API_BASE"] = f"http://localhost:{BACKEND_PORT}"
 
     process = subprocess.Popen(
-        ["npm", "run", "dev", "--", "-p", str(FRONTEND_PORT)],
+        [npm_cmd, "run", "dev", "--", "-p", str(FRONTEND_PORT)],
         cwd=FRONTEND_DIR,
         env=env,
     )
