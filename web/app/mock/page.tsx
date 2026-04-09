@@ -223,9 +223,9 @@ export default function MockExamPage() {
           </div>
 
           {/* Start Exam Card */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-lg mb-8">
+          <div className="glass-card p-8 shadow-lg mb-8">
             <div className="text-center mb-8">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4 flex items-center justify-center">
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 mx-auto mb-4 flex items-center justify-center shadow-lg shadow-cyan-500/25">
                 <Timer className="w-10 h-10 text-white" />
               </div>
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
@@ -270,7 +270,7 @@ export default function MockExamPage() {
             <button
               onClick={startExam}
               disabled={loading}
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-slate-400 disabled:to-slate-500 text-white font-semibold py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl disabled:shadow-none flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:from-slate-400 disabled:to-slate-500 text-white font-semibold py-4 px-6 rounded-2xl transition-all shadow-lg hover:shadow-xl hover:shadow-cyan-500/20 disabled:shadow-none flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -288,10 +288,7 @@ export default function MockExamPage() {
 
           {/* Past Results */}
           {pastResults.length > 0 && (
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                <BarChart3 className="w-5 h-5 text-blue-500" />
-                Past Results
+            <div className="glass-card-sm p-6">
               </h3>
               <div className="space-y-3">
                 {pastResults.slice(0, 5).map((r, idx) => (
@@ -338,9 +335,9 @@ export default function MockExamPage() {
     const isLowTime = timeRemaining < 300; // 5 minutes
 
     return (
-      <div className="min-h-screen bg-slate-100 dark:bg-slate-900">
+      <div className="min-h-screen">
         {/* Fixed Header */}
-        <div className="fixed top-0 left-0 right-0 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 z-50 shadow-sm">
+        <div className="fixed top-0 left-0 right-0 glass-nav z-50">
           <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <span className="font-semibold text-slate-900 dark:text-white">
@@ -382,7 +379,7 @@ export default function MockExamPage() {
         <div className="pt-24 pb-32 px-4">
           <div className="max-w-4xl mx-auto">
             {/* Question Card */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div className="glass-card overflow-hidden">
               <div className="p-6">
                 <p className="text-lg text-slate-900 dark:text-white whitespace-pre-line mb-6">
                   {currentQ.question_text}
@@ -440,7 +437,7 @@ export default function MockExamPage() {
         </div>
 
         {/* Question Navigator */}
-        <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 p-4">
+        <div className="fixed bottom-0 left-0 right-0 glass-nav p-4">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-wrap gap-2 justify-center">
               {questions.map((q, idx) => {
@@ -485,8 +482,8 @@ export default function MockExamPage() {
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 p-6">
         <div className="max-w-4xl mx-auto">
           {/* Results Header */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-lg mb-6 text-center">
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4 flex items-center justify-center">
+          <div className="glass-card p-8 shadow-lg mb-6 text-center">
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 mx-auto mb-4 flex items-center justify-center shadow-lg shadow-cyan-500/25">
               <Trophy className="w-12 h-12 text-white" />
             </div>
             <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
@@ -516,9 +513,9 @@ export default function MockExamPage() {
           </div>
 
           {/* Subject Breakdown */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 mb-6">
+          <div className="glass-card-sm p-6 mb-6">
             <h2 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-              <BarChart3 className="w-5 h-5 text-blue-500" />
+              <BarChart3 className="w-5 h-5 text-cyan-500" />
               Performance by Subject
             </h2>
             <div className="space-y-4">
@@ -553,7 +550,7 @@ export default function MockExamPage() {
           </div>
 
           {/* Question Review */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 mb-6">
+          <div className="glass-card-sm p-6 mb-6">
             <h2 className="font-semibold text-slate-900 dark:text-white mb-4">
               Answer Review
             </h2>
@@ -600,7 +597,7 @@ export default function MockExamPage() {
             </button>
             <button
               onClick={startExam}
-              className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl"
+              className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl"
             >
               Try Again
             </button>

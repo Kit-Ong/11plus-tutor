@@ -920,7 +920,7 @@ export default function SettingsPage() {
         {activeTab === "general" && (
           <div className="space-y-6">
             {/* 1. Interface Settings (UI) */}
-            <section className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden transition-colors duration-200">
+            <section className="glass-card overflow-hidden transition-colors duration-200">
               <div className="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex items-center gap-2">
                 <Globe className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                 <h2 className="font-semibold text-slate-900 dark:text-slate-100">
@@ -978,7 +978,7 @@ export default function SettingsPage() {
             </section>
 
             {/* 2. System Configuration */}
-            <section className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden transition-colors duration-200">
+            <section className="glass-card overflow-hidden transition-colors duration-200">
               <div className="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex items-center gap-2">
                 <Server className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                 <h2 className="font-semibold text-slate-900 dark:text-slate-100">
@@ -1008,7 +1008,7 @@ export default function SettingsPage() {
             </section>
 
             {/* 3. Research Tools */}
-            <section className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden transition-colors duration-200">
+            <section className="glass-card overflow-hidden transition-colors duration-200">
               <div className="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex items-center gap-2">
                 <Search className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                 <h2 className="font-semibold text-slate-900 dark:text-slate-100">
@@ -1115,7 +1115,7 @@ export default function SettingsPage() {
             </section>
 
             {/* 4. TTS Settings */}
-            <section className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden transition-colors duration-200">
+            <section className="glass-card overflow-hidden transition-colors duration-200">
               <div className="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex items-center gap-2">
                 <Volume2 className="w-4 h-4 text-slate-500 dark:text-slate-400" />
                 <h2 className="font-semibold text-slate-900 dark:text-slate-100">
@@ -1158,7 +1158,7 @@ export default function SettingsPage() {
 
             {/* Active Models Status */}
             {data?.env && (
-              <section className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden transition-colors duration-200">
+              <section className="glass-card overflow-hidden transition-colors duration-200">
                 <div className="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Cpu className="w-4 h-4 text-slate-500 dark:text-slate-400" />
@@ -1197,7 +1197,7 @@ export default function SettingsPage() {
         {activeTab === "environment" && envConfig && (
           <div className="space-y-6">
             {/* Status Overview */}
-            <section className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden transition-colors duration-200">
+            <section className="glass-card overflow-hidden transition-colors duration-200">
               <div className="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Cpu className="w-4 h-4 text-slate-500 dark:text-slate-400" />
@@ -1279,7 +1279,7 @@ export default function SettingsPage() {
               return (
                 <section
                   key={category.id}
-                  className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden transition-colors duration-200"
+                  className="glass-card overflow-hidden transition-colors duration-200"
                 >
                   <div className="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex items-center gap-2">
                     <div className="text-blue-500 dark:text-blue-400">
@@ -1387,7 +1387,7 @@ export default function SettingsPage() {
         {activeTab === "llm_providers" && (
           <div className="space-y-6">
             {/* Header & Add Button */}
-            <div className="flex justify-between items-center bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+            <div className="flex justify-between items-center glass-card p-6">
               <div>
                 <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
                   LLM Service Providers
@@ -1437,7 +1437,7 @@ export default function SettingsPage() {
                 {providers.map((provider) => (
                   <div
                     key={provider.name}
-                    className={`bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border transition-all ${provider.is_active ? "border-blue-500 ring-1 ring-blue-500/20" : "border-slate-200 dark:border-slate-700"}`}
+                    className={`glass-card p-6 transition-all ${provider.is_active ? "border-cyan-500 ring-1 ring-cyan-500/20" : ""}`}
                   >
                     <div className="flex justify-between items-start">
                       <div className="flex items-start gap-4">
@@ -1528,7 +1528,7 @@ export default function SettingsPage() {
             {/* Edit/Add Form Modal */}
             {showProviderForm && editingProvider && (
               <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-                <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh]">
+                <div className="glass-card shadow-xl w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh]">
                   <div className="p-6 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
                     <h3 className="font-semibold text-lg text-slate-900 dark:text-slate-100">
                       {editingProvider.name ? "Edit Provider" : "Add Provider"}

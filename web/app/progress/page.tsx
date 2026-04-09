@@ -157,11 +157,11 @@ export default function ProgressPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 p-6">
-      <div className="max-w-6xl mx-auto space-y-6">
+    <div className="space-y-6">
+      <div className="">
         {/* Header */}
         <div className="flex items-center gap-3 mb-8">
-          <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+          <div className="p-3 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/20">
             <BarChart3 className="w-6 h-6" />
           </div>
           <div>
@@ -177,9 +177,9 @@ export default function ProgressPage() {
         {/* Key Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {/* Total Questions */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="glass-card-sm p-5">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+              <div className="p-2 rounded-xl bg-blue-100 dark:bg-blue-900/30">
                 <Target className="w-5 h-5 text-blue-600 dark:text-blue-400" />
               </div>
               <div>
@@ -194,9 +194,9 @@ export default function ProgressPage() {
           </div>
 
           {/* Accuracy */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="glass-card-sm p-5">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
+              <div className="p-2 rounded-xl bg-green-100 dark:bg-green-900/30">
                 <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
               </div>
               <div>
@@ -211,9 +211,9 @@ export default function ProgressPage() {
           </div>
 
           {/* Current Streak */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="glass-card-sm p-5">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+              <div className="p-2 rounded-xl bg-orange-100 dark:bg-orange-900/30">
                 <Flame className="w-5 h-5 text-orange-600 dark:text-orange-400" />
               </div>
               <div>
@@ -228,9 +228,9 @@ export default function ProgressPage() {
           </div>
 
           {/* Predicted Score */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="glass-card-sm p-5">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
+              <div className="p-2 rounded-xl bg-purple-100 dark:bg-purple-900/30">
                 <Trophy className="w-5 h-5 text-purple-600 dark:text-purple-400" />
               </div>
               <div>
@@ -248,9 +248,9 @@ export default function ProgressPage() {
         {/* Activity Chart & Subject Performance */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* Last 7 Days Activity */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="glass-card p-6">
             <h2 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-blue-500" />
+              <Calendar className="w-5 h-5 text-cyan-500" />
               Last 7 Days
             </h2>
             <div className="flex items-end justify-between gap-2 h-40">
@@ -277,7 +277,7 @@ export default function ProgressPage() {
           </div>
 
           {/* Subject Performance */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="glass-card p-6">
             <h2 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
               <Brain className="w-5 h-5 text-purple-500" />
               Subject Performance
@@ -332,7 +332,7 @@ export default function ProgressPage() {
         </div>
 
         {/* Question Type Performance */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div className="glass-card p-6">
           <h2 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-green-500" />
             Performance by Question Type
@@ -396,7 +396,7 @@ export default function ProgressPage() {
                   <a
                     key={item.subject}
                     href={`/practice?subject=${item.subject}`}
-                    className="px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-orange-300 dark:border-orange-700 text-sm font-medium text-orange-700 dark:text-orange-300 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-colors"
+                    className="px-4 py-2 rounded-2xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm border border-orange-300 dark:border-orange-700 text-sm font-medium text-orange-700 dark:text-orange-300 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-colors"
                   >
                     Practice {item.name}
                   </a>
@@ -419,7 +419,7 @@ export default function ProgressPage() {
             </p>
             <a
               href="/practice"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all"
             >
               <Target className="w-5 h-5" />
               Start Practicing

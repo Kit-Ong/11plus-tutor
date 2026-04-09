@@ -236,7 +236,7 @@ export default function LessonPage() {
       )}
 
       {/* Practice CTA */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 text-white">
+      <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl p-6 text-white">
         <h3 className="text-lg font-bold mb-2">Ready to Practice?</h3>
         <p className="text-blue-100 mb-4">
           Now that you understand {lesson.title.toLowerCase()}, put it into practice!

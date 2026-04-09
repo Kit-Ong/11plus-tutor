@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { GlobalProvider } from "@/context/GlobalContext";
 import ThemeScript from "@/components/ThemeScript";
 import LayoutWrapper from "@/components/LayoutWrapper";
 
-// Use Inter font with swap display for better loading
-const font = Inter({
+// Use Poppins font for a fun, kid-friendly look (like Mathletics)
+const font = Poppins({
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
   fallback: ["system-ui", "sans-serif"],
 });
 

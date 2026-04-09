@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import {
   LayoutDashboard,
   BookOpen,
@@ -16,136 +16,138 @@ import {
   BarChart3,
   Clock,
   Lightbulb,
-  Route,
-  HelpCircle,
   Sparkles,
+  Menu,
+  X,
 } from "lucide-react";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const navGroups = [
-    {
-      name: "Practice",
-      items: [
-        { name: "Dashboard", href: "/", icon: LayoutDashboard },
-        { name: "Practice Questions", href: "/practice", icon: Target },
-        { name: "Getting Started", href: "/getting-started", icon: Sparkles },
-      ],
-    },
-    {
-      name: "Learn",
-      items: [
-        { name: "Topic Lessons", href: "/learn", icon: BookOpen },
-        { name: "Strategy Guides", href: "/strategies", icon: Lightbulb },
-      ],
-    },
-    {
-      name: "Subjects",
-      items: [
-        { name: "Verbal Reasoning", href: "/practice?subject=verbal_reasoning", icon: PenTool },
-        { name: "Non-Verbal", href: "/practice?subject=non_verbal_reasoning", icon: Puzzle },
-        { name: "Mathematics", href: "/practice?subject=mathematics", icon: Calculator },
-        { name: "English", href: "/practice?subject=english", icon: BookOpen },
-      ],
-    },
-    {
-      name: "Progress",
-      items: [
-        { name: "My Progress", href: "/progress", icon: BarChart3 },
-        { name: "Mock Exams", href: "/mock", icon: Clock },
-        { name: "Achievements", href: "/achievements", icon: Trophy },
-      ],
-    },
+  const navItems = [
+    { name: "Home", href: "/", icon: LayoutDashboard },
+    { name: "Practice", href: "/practice", icon: Target },
+    { name: "Mock Exam", href: "/mock", icon: Clock },
+    { name: "Learn", href: "/learn", icon: BookOpen },
+    { name: "Strategies", href: "/strategies", icon: Lightbulb },
+    { name: "Progress", href: "/progress", icon: BarChart3 },
+    { name: "Achievements", href: "/achievements", icon: Trophy },
   ];
 
-  return (
-    <div className="w-64 bg-slate-50/50 dark:bg-slate-800/50 h-full border-r border-slate-200 dark:border-slate-700 flex flex-col backdrop-blur-xl transition-colors duration-200">
-      {/* Header */}
-      <div className="p-6 border-b border-slate-100 dark:border-slate-700">
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <GraduationCap className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h1 className="font-bold text-slate-900 dark:text-slate-100 tracking-tight text-lg">
-                11+ Tutor
-              </h1>
-              <p className="text-[10px] text-slate-500 dark:text-slate-400">
-                Grammar School Prep
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+  const isActive = (href: string) =>
+    pathname === href || (href !== "/" && pathname.startsWith(href));
 
-      {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto p-4 space-y-6">
-        {navGroups.map((group, idx) => (
-          <div key={idx}>
-            {group.name && (
-              <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-4 mb-2">
-                {group.name}
+  return (
+    <>
+      {/* Top Navigation Bar */}
+      <nav className="glass-nav sticky top-0 z-50 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/25">
+                <GraduationCap className="w-6 h-6 text-white" />
               </div>
-            )}
-            <div className="space-y-0.5">
-              {group.items.map((item) => {
-                const isActive = pathname === item.href ||
-                  (item.href.includes('?') && pathname === item.href.split('?')[0]);
+              <div className="hidden sm:block">
+                <h1 className="font-bold text-slate-900 dark:text-white text-lg leading-tight">
+                  11+ Tutor
+                </h1>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400 -mt-0.5 tracking-wider uppercase">
+                  Grammar School Prep
+                </p>
+              </div>
+            </Link>
+
+            {/* Desktop Nav */}
+            <div className="hidden lg:flex items-center gap-1">
+              {navItems.map((item) => {
+                const active = isActive(item.href);
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`group flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ease-in-out border ${
-                      isActive
-                        ? "bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm border-slate-100 dark:border-slate-600"
-                        : "text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-sm border-transparent hover:border-slate-100 dark:hover:border-slate-600"
+                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                      active
+                        ? "bg-white dark:bg-slate-700 text-cyan-600 dark:text-cyan-400 shadow-sm"
+                        : "text-slate-600 dark:text-slate-300 hover:bg-white/60 dark:hover:bg-slate-700/60 hover:text-cyan-600 dark:hover:text-cyan-400"
                     }`}
                   >
-                    <item.icon
-                      className={`w-4 h-4 transition-colors ${
-                        isActive
-                          ? "text-blue-500 dark:text-blue-400"
-                          : "text-slate-400 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-blue-400"
-                      }`}
-                    />
-                    <span className="font-medium text-sm">{item.name}</span>
+                    <item.icon className={`w-4 h-4 ${active ? "text-cyan-500" : ""}`} />
+                    <span>{item.name}</span>
                   </Link>
                 );
               })}
             </div>
-          </div>
-        ))}
-      </nav>
 
-      {/* Footer */}
-      <div className="p-4 border-t border-slate-100 dark:border-slate-700 space-y-2 bg-slate-50/30 dark:bg-slate-800/30">
-        {/* Exam Info */}
-        <div className="px-4 py-3 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-lg border border-purple-200/50 dark:border-purple-800/50">
-          <div className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1">
-            GL Assessment Format
-          </div>
-          <div className="text-[10px] text-slate-600 dark:text-slate-400">
-            Prepare for grammar school entrance
+            {/* Right side: Settings + Mobile Menu */}
+            <div className="flex items-center gap-2">
+              <Link
+                href="/settings"
+                className={`p-2.5 rounded-full transition-all ${
+                  pathname === "/settings"
+                    ? "bg-white dark:bg-slate-700 text-cyan-600 shadow-sm"
+                    : "text-slate-500 hover:bg-white/60 dark:hover:bg-slate-700/60 hover:text-cyan-600"
+                }`}
+              >
+                <Settings className="w-5 h-5" />
+              </Link>
+              <Link
+                href="/getting-started"
+                className={`hidden sm:flex p-2.5 rounded-full transition-all ${
+                  pathname === "/getting-started"
+                    ? "bg-white dark:bg-slate-700 text-amber-500 shadow-sm"
+                    : "text-slate-500 hover:bg-white/60 dark:hover:bg-slate-700/60 hover:text-amber-500"
+                }`}
+              >
+                <Sparkles className="w-5 h-5" />
+              </Link>
+
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="lg:hidden p-2.5 rounded-full text-slate-600 hover:bg-white/60 dark:hover:bg-slate-700/60 transition-all"
+              >
+                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Settings */}
-        <Link
-          href="/settings"
-          className={`w-full flex items-center gap-3 px-4 py-2 rounded-lg transition-all text-sm ${
-            pathname === "/settings"
-              ? "bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm border border-slate-100 dark:border-slate-600"
-              : "text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-100"
-          }`}
-        >
-          <Settings
-            className={`w-4 h-4 ${pathname === "/settings" ? "text-blue-500 dark:text-blue-400" : "text-slate-400 dark:text-slate-500"}`}
-          />
-          <span>Settings</span>
-        </Link>
-      </div>
-    </div>
+        {/* Mobile Menu Dropdown */}
+        {mobileOpen && (
+          <div className="lg:hidden border-t border-white/30 dark:border-slate-700/50">
+            <div className="max-w-7xl mx-auto px-4 py-3 space-y-1">
+              {navItems.map((item) => {
+                const active = isActive(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium transition-all ${
+                      active
+                        ? "bg-white dark:bg-slate-700 text-cyan-600 dark:text-cyan-400 shadow-sm"
+                        : "text-slate-600 dark:text-slate-300 hover:bg-white/60"
+                    }`}
+                  >
+                    <item.icon className={`w-5 h-5 ${active ? "text-cyan-500" : "text-slate-400"}`} />
+                    <span>{item.name}</span>
+                  </Link>
+                );
+              })}
+              <Link
+                href="/getting-started"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-white/60 sm:hidden"
+              >
+                <Sparkles className="w-5 h-5 text-slate-400" />
+                <span>Getting Started</span>
+              </Link>
+            </div>
+          </div>
+        )}
+      </nav>
+    </>
   );
 }

@@ -158,7 +158,7 @@ export default function StrategiesPage() {
                     <Link
                       key={strategy.question_type}
                       href={`/strategies/${strategy.question_type}`}
-                      className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600 transition-all group"
+                      className="glass-card-sm hover:shadow-md hover:border-slate-300 dark:hover:border-slate-600 transition-all group"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">

@@ -140,7 +140,7 @@ export default function LearnPage() {
           return (
             <div
               key={subject.id}
-              className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+              className="glass-card-sm overflow-hidden"
             >
               {/* Subject Header */}
               <button

@@ -19,10 +19,10 @@ export default function LayoutWrapper({
   }
 
   return (
-    <div className="flex h-screen bg-slate-50 dark:bg-slate-900 overflow-hidden transition-colors duration-200">
+    <div className="min-h-screen flex flex-col transition-colors duration-200">
       <Sidebar />
-      <main className="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-900">
-        <div className="w-full p-8">{children}</div>
+      <main className="flex-1">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">{children}</div>
       </main>
     </div>
   );

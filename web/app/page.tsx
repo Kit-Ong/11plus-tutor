@@ -93,7 +93,7 @@ const QUICK_ACTIONS = [
     description: "Jump into random practice",
     href: "/practice",
     icon: Play,
-    gradient: "from-blue-600 to-purple-600",
+    gradient: "from-cyan-500 to-blue-600",
     primary: true,
   },
   {
@@ -207,10 +207,10 @@ export default function ElevenPlusTutorHome() {
     <div className="space-y-8">
       {/* Welcome Modal for First-Time Visitors */}
       {showWelcome && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="glass-card max-w-lg w-full shadow-2xl overflow-hidden">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white text-center">
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-600 p-6 text-white text-center rounded-t-3xl">
               <div className="text-5xl mb-3">🎓</div>
               <h2 className="text-2xl font-bold mb-2">Welcome to 11+ Tutor!</h2>
               <p className="opacity-90">Free practice for grammar school entrance exams</p>
@@ -219,8 +219,8 @@ export default function ElevenPlusTutorHome() {
             {/* Modal Content */}
             <div className="p-6 space-y-4">
               <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <div className="w-8 h-8 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-slate-900 dark:text-white">1,364 Verified Questions</h3>
@@ -229,7 +229,7 @@ export default function ElevenPlusTutorHome() {
               </div>
 
               <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Target className="w-5 h-5 text-green-600 dark:text-green-400" />
                 </div>
                 <div>
@@ -239,7 +239,7 @@ export default function ElevenPlusTutorHome() {
               </div>
 
               <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 bg-amber-100 dark:bg-amber-900/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-amber-100 dark:bg-amber-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Sparkles className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                 </div>
                 <div>
@@ -252,13 +252,13 @@ export default function ElevenPlusTutorHome() {
                 <Link
                   href="/getting-started"
                   onClick={dismissWelcome}
-                  className="flex-1 py-3 px-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-semibold rounded-xl text-center hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+                  className="flex-1 py-3 px-4 border-2 border-cyan-500 text-cyan-600 dark:text-cyan-400 font-semibold rounded-2xl text-center hover:bg-cyan-50 dark:hover:bg-cyan-900/20 transition-colors"
                 >
                   Read the Guide
                 </Link>
                 <button
                   onClick={dismissWelcome}
-                  className="flex-1 py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all"
+                  className="flex-1 py-3 px-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-2xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all"
                 >
                   Start Practicing!
                 </button>
@@ -281,26 +281,26 @@ export default function ElevenPlusTutorHome() {
 
         {/* Stats Pills */}
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 px-4 py-2 bg-orange-100 dark:bg-orange-900/30 rounded-xl">
+          <div className="flex items-center gap-2 px-4 py-2 glass-card-sm">
             <Flame className="w-5 h-5 text-orange-500" />
             <span className="font-bold text-orange-600 dark:text-orange-400">{streak} day streak</span>
           </div>
-          <div className="flex items-center gap-2 px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl">
+          <div className="flex items-center gap-2 px-4 py-2 glass-card-sm">
             <Trophy className="w-5 h-5 text-emerald-500" />
             <span className="font-bold text-emerald-600 dark:text-emerald-400">{accuracy}% accuracy</span>
           </div>
-          <div className="flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
-            <Target className="w-5 h-5 text-blue-500" />
-            <span className="font-bold text-blue-600 dark:text-blue-400">{totalPracticed} practiced</span>
+          <div className="flex items-center gap-2 px-4 py-2 glass-card-sm">
+            <Target className="w-5 h-5 text-cyan-500" />
+            <span className="font-bold text-cyan-600 dark:text-cyan-400">{totalPracticed} practiced</span>
           </div>
         </div>
       </div>
 
       {/* Daily Goal Progress */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+      <div className="glass-card p-6">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/20">
               <Target className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -320,7 +320,7 @@ export default function ElevenPlusTutorHome() {
             className={`h-full transition-all duration-500 ${
               dailyProgress >= 100
                 ? "bg-gradient-to-r from-emerald-500 to-green-500"
-                : "bg-gradient-to-r from-blue-500 to-purple-500"
+                : "bg-gradient-to-r from-cyan-500 to-blue-500"
             }`}
             style={{ width: `${dailyProgress}%` }}
           />
@@ -344,7 +344,7 @@ export default function ElevenPlusTutorHome() {
                 href={action.href}
                 className={`${
                   action.primary ? "col-span-2 lg:col-span-1" : ""
-                } bg-gradient-to-br ${action.gradient} rounded-2xl p-5 text-white shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]`}
+                } bg-gradient-to-br ${action.gradient} rounded-3xl p-5 text-white shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] hover:-translate-y-0.5`}
               >
                 <Icon className="w-8 h-8 mb-3 opacity-90" />
                 <h3 className="font-bold text-lg">{action.name}</h3>
@@ -368,21 +368,21 @@ export default function ElevenPlusTutorHome() {
             return (
               <div
                 key={subject.id}
-                className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden"
+                className="glass-card overflow-hidden"
               >
                 <Link
                   href={`/practice?subject=${subject.id}`}
-                  className={`block p-4 border-b border-slate-200 dark:border-slate-700 bg-${subject.color}-50 dark:bg-${subject.color}-900/20 hover:bg-${subject.color}-100 dark:hover:bg-${subject.color}-900/30 transition-colors`}
+                  className={`block p-4 border-b border-white/30 dark:border-slate-700/50 hover:bg-white/40 dark:hover:bg-slate-700/30 transition-colors`}
                   style={{
-                    background: subject.color === "purple" ? "rgba(168, 85, 247, 0.1)" :
-                               subject.color === "blue" ? "rgba(59, 130, 246, 0.1)" :
-                               subject.color === "green" ? "rgba(34, 197, 94, 0.1)" :
-                               "rgba(245, 158, 11, 0.1)"
+                    background: subject.color === "purple" ? "rgba(168, 85, 247, 0.08)" :
+                               subject.color === "blue" ? "rgba(59, 130, 246, 0.08)" :
+                               subject.color === "green" ? "rgba(34, 197, 94, 0.08)" :
+                               "rgba(245, 158, 11, 0.08)"
                   }}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${subject.gradient} flex items-center justify-center`}>
+                      <div className={`w-10 h-10 rounded-2xl bg-gradient-to-br ${subject.gradient} flex items-center justify-center shadow-lg`}>
                         <Icon className="w-5 h-5 text-white" />
                       </div>
                       <div>
@@ -405,7 +405,7 @@ export default function ElevenPlusTutorHome() {
                     <Link
                       key={type}
                       href={`/practice?subject=${subject.id}&type=${type}`}
-                      className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-700/50 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors text-sm font-medium text-slate-700 dark:text-slate-300"
+                      className="p-2.5 rounded-2xl bg-white/50 dark:bg-slate-700/50 hover:bg-white/80 dark:hover:bg-slate-700 transition-colors text-sm font-medium text-slate-700 dark:text-slate-300"
                     >
                       {type.replace(/_/g, " ").replace(/nvr /g, "").split(' ').map(word =>
                         word.charAt(0).toUpperCase() + word.slice(1)
@@ -428,9 +428,9 @@ export default function ElevenPlusTutorHome() {
             return (
               <div
                 key={feature.title}
-                className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700"
+                className="glass-card-sm p-4"
               >
-                <Icon className="w-6 h-6 text-blue-500 mb-2" />
+                <Icon className="w-6 h-6 text-cyan-500 mb-2" />
                 <h3 className="font-semibold text-sm text-slate-900 dark:text-white mb-1">{feature.title}</h3>
                 <p className="text-xs text-slate-500">{feature.description}</p>
               </div>
@@ -443,9 +443,9 @@ export default function ElevenPlusTutorHome() {
       <div className="grid md:grid-cols-3 gap-4">
         <Link
           href="/progress"
-          className="bg-white dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all flex items-center gap-4"
+          className="glass-card p-5 hover:shadow-lg transition-all flex items-center gap-4 hover:-translate-y-0.5"
         >
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/20">
             <TrendingUp className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -456,9 +456,9 @@ export default function ElevenPlusTutorHome() {
 
         <Link
           href="/achievements"
-          className="bg-white dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all flex items-center gap-4"
+          className="glass-card p-5 hover:shadow-lg transition-all flex items-center gap-4 hover:-translate-y-0.5"
         >
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-500/20">
             <Award className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -469,9 +469,9 @@ export default function ElevenPlusTutorHome() {
 
         <Link
           href="/strategies"
-          className="bg-white dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all flex items-center gap-4"
+          className="glass-card p-5 hover:shadow-lg transition-all flex items-center gap-4 hover:-translate-y-0.5"
         >
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/20">
             <Lightbulb className="w-6 h-6 text-white" />
           </div>
           <div>
@@ -482,9 +482,9 @@ export default function ElevenPlusTutorHome() {
       </div>
 
       {/* Info Section */}
-      <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 text-white">
+      <div className="glass-card bg-gradient-to-br from-slate-800/90 to-slate-900/90 p-6 text-white" style={{ background: 'linear-gradient(135deg, rgba(15,23,42,0.92), rgba(30,41,59,0.92))', border: '1px solid rgba(51,65,85,0.5)' }}>
         <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center flex-shrink-0">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0 shadow-lg shadow-amber-500/25">
             <GraduationCap className="w-6 h-6 text-white" />
           </div>
           <div>

@@ -54,9 +54,9 @@ export default function AccountPage() {
 
       <div className="grid gap-6">
         {/* Profile Card */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+        <div className="glass-card">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white text-2xl font-bold">
               <User className="w-8 h-8" />
             </div>
             <div>
@@ -78,7 +78,7 @@ export default function AccountPage() {
         </div>
 
         {/* Stats Card */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+        <div className="glass-card">
           <div className="flex items-center gap-3 mb-6">
             <BarChart3 className="w-6 h-6 text-purple-500" />
             <h2 className="text-xl font-bold text-slate-900 dark:text-white">
@@ -121,7 +121,7 @@ export default function AccountPage() {
         </div>
 
         {/* Open Source Info */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 text-white">
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl p-6 text-white">
           <div className="flex items-center gap-3 mb-4">
             <Github className="w-6 h-6" />
             <h2 className="text-xl font-bold">Open Source & Free</h2>
@@ -147,7 +147,7 @@ export default function AccountPage() {
         <div className="grid grid-cols-2 gap-4">
           <Link
             href="/learn"
-            className="flex items-center gap-3 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-colors"
+            className="flex items-center gap-3 p-4 glass-card-sm hover:border-blue-500 transition-colors"
           >
             <BookOpen className="w-6 h-6 text-blue-500" />
             <div>
@@ -159,7 +159,7 @@ export default function AccountPage() {
           </Link>
           <Link
             href="/practice"
-            className="flex items-center gap-3 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-colors"
+            className="flex items-center gap-3 p-4 glass-card-sm hover:border-blue-500 transition-colors"
           >
             <Target className="w-6 h-6 text-purple-500" />
             <div>

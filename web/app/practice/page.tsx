@@ -67,7 +67,7 @@ function isSVG(str: string): boolean {
 function AlphabetHelper() {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   return (
-    <div className="bg-slate-100 dark:bg-slate-700/50 rounded-lg p-3 mb-4">
+    <div className="glass-card-sm p-3 mb-4">
       <div className="text-xs text-slate-500 dark:text-slate-400 mb-2 font-medium">Alphabet Reference:</div>
       <div className="flex flex-wrap gap-1 justify-center">
         {letters.map((letter, i) => (
@@ -518,7 +518,7 @@ function PracticeContent() {
           </button>
 
           {/* Score */}
-          <div className="flex items-center gap-3 bg-white dark:bg-slate-800 rounded-lg px-4 py-2 shadow-sm border border-slate-200 dark:border-slate-700">
+          <div className="flex items-center gap-3 glass-card-sm px-4 py-2">
             <div className="text-center">
               <p className="text-2xl font-bold text-slate-900 dark:text-white">{score.correct}</p>
               <p className="text-xs text-slate-500">Correct</p>
@@ -548,7 +548,7 @@ function PracticeContent() {
         <select
           value={filter.subject}
           onChange={(e) => setFilter((f) => ({ ...f, subject: e.target.value }))}
-          className="rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white px-3 py-2 text-sm"
+          className="rounded-2xl border border-white/50 dark:border-slate-600 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm text-slate-900 dark:text-white px-3 py-2 text-sm"
         >
           <option value="">All Subjects</option>
           <option value="verbal_reasoning">Verbal Reasoning</option>
@@ -559,7 +559,7 @@ function PracticeContent() {
         <select
           value={filter.questionType}
           onChange={(e) => setFilter((f) => ({ ...f, questionType: e.target.value }))}
-          className="rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white px-3 py-2 text-sm"
+          className="rounded-2xl border border-white/50 dark:border-slate-600 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm text-slate-900 dark:text-white px-3 py-2 text-sm"
         >
           <option value="">All Types</option>
           <optgroup label="Verbal Reasoning">
@@ -591,15 +591,15 @@ function PracticeContent() {
       </div>
 
       {/* Progress Bar */}
-      <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full mb-6 overflow-hidden">
+      <div className="h-2 bg-white/50 dark:bg-slate-700 rounded-full mb-6 overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300"
+          className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-300"
           style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
         />
       </div>
 
       {/* Question Card */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="glass-card overflow-hidden">
         {/* Question Header */}
         <div className="bg-slate-50 dark:bg-slate-700/50 px-6 py-4 flex justify-between items-center">
           <div className="flex flex-wrap gap-2">
@@ -858,7 +858,7 @@ function PracticeContent() {
               <button
                 onClick={submitAnswer}
                 disabled={selectedAnswer === null || submitting}
-                className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-slate-400 disabled:to-slate-500 text-white font-semibold py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl disabled:shadow-none flex items-center justify-center gap-2"
+                className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:from-slate-400 disabled:to-slate-500 text-white font-semibold py-4 px-6 rounded-2xl transition-all shadow-lg hover:shadow-xl hover:shadow-cyan-500/20 disabled:shadow-none flex items-center justify-center gap-2"
               >
                 {submitting ? (
                   <>
@@ -872,7 +872,7 @@ function PracticeContent() {
             ) : (
               <button
                 onClick={nextQuestion}
-                className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-4 px-6 rounded-2xl transition-all shadow-lg hover:shadow-xl hover:shadow-cyan-500/20 flex items-center justify-center gap-2"
               >
                 Next Question
                 <ChevronRight className="w-5 h-5" />

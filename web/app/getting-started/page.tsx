@@ -83,7 +83,7 @@ export default function GettingStartedPage() {
       {activeTab === "parents" && (
         <div className="space-y-8">
           {/* Quick Start for Parents */}
-          <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl p-8 text-white">
             <h2 className="text-2xl font-bold mb-4">Quick Start Guide</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white/10 rounded-xl p-5">
@@ -117,7 +117,7 @@ export default function GettingStartedPage() {
           </div>
 
           {/* What's Included */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6">
+          <div className="glass-card p-6">
             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6">What's Included (All Free)</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {[
@@ -145,7 +145,7 @@ export default function GettingStartedPage() {
           </div>
 
           {/* Recommended Schedule */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6">
+          <div className="glass-card p-6">
             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
               <Calendar className="w-6 h-6 text-blue-500" />
               Recommended Practice Schedule
@@ -180,7 +180,7 @@ export default function GettingStartedPage() {
           </div>
 
           {/* FAQ */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6">
+          <div className="glass-card p-6">
             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Frequently Asked Questions</h2>
             <div className="space-y-2">
               {[
@@ -239,7 +239,7 @@ export default function GettingStartedPage() {
           <div className="text-center">
             <Link
               href="/practice"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all"
             >
               <Play className="w-5 h-5" />
               Start Practicing Now
@@ -262,7 +262,7 @@ export default function GettingStartedPage() {
           </div>
 
           {/* How It Works - Kid Friendly */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6">
+          <div className="glass-card p-6">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
               How to Use 11+ Tutor 🚀
             </h2>
@@ -322,7 +322,7 @@ export default function GettingStartedPage() {
           </div>
 
           {/* The 4 Subjects */}
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6">
+          <div className="glass-card p-6">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
               The 4 Things You'll Practice 📚
             </h2>

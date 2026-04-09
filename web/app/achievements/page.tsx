@@ -311,7 +311,7 @@ export default function AchievementsPage() {
         </div>
 
         {/* Progress Overview */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 mb-6">
+        <div className="glass-card-sm p-6 mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="font-medium text-slate-700 dark:text-slate-300">
               Overall Progress
@@ -340,7 +340,7 @@ export default function AchievementsPage() {
                 key={achievement.id}
                 className={`relative overflow-hidden rounded-xl border ${
                   isUnlocked
-                    ? "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700"
+                    ? "glass-card border-white/50 dark:border-slate-600"
                     : "bg-slate-100 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50"
                 }`}
               >
@@ -419,7 +419,7 @@ export default function AchievementsPage() {
 
         {/* Empty State */}
         {unlockedCount === 0 && (
-          <div className="mt-8 text-center py-12 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+          <div className="mt-8 text-center py-12 glass-card">
             <Trophy className="w-16 h-16 text-slate-300 dark:text-slate-600 mx-auto mb-4" />
             <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
               Start Your Journey!
@@ -429,7 +429,7 @@ export default function AchievementsPage() {
             </p>
             <a
               href="/practice"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold hover:shadow-lg transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg transition-all"
             >
               <Target className="w-5 h-5" />
               Start Practicing
