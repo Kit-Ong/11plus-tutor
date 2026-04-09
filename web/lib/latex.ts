@@ -27,9 +27,14 @@ export function convertLatexDelimiters(content: string): string {
   // Be careful not to match escaped parentheses in other contexts
   result = result.replace(/\\\(([\s\S]*?)\\\)/g, " $$$1$$ ");
 
-  // Also handle cases where LaTeX is directly in the text without proper delimiters
-  // e.g., standalone \lim, \frac, etc. that should be wrapped
-  // This is a common issue with LLM outputs
+  // Wrap bare \frac{a}{b} and \dfrac{a}{b} that are NOT already inside $...$ delimiters.
+  // This handles options/answers stored without \(...\) wrappers, e.g. \frac{5}{8}.
+  // Strategy: count $ signs before the match position — if odd, we're inside math mode already.
+  result = result.replace(/\\(?:d)?frac\{[^}]+\}\{[^}]+\}/g, (match, offset, str) => {
+    const dollarCount = (str.slice(0, offset).match(/\$/g) || []).length;
+    if (dollarCount % 2 === 1) return match; // already inside $...$ math environment
+    return `$${match}$`;
+  });
 
   // Clean up multiple consecutive newlines
   result = result.replace(/\n{3,}/g, "\n\n");
