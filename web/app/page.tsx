@@ -315,7 +315,7 @@ export default function ElevenPlusTutorHome() {
             </div>
           )}
         </div>
-        <div className="h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+        <div className="h-3 bg-white/40 dark:bg-white/10 rounded-full overflow-hidden">
           <div
             className={`h-full transition-all duration-500 ${
               dailyProgress >= 100
@@ -405,7 +405,7 @@ export default function ElevenPlusTutorHome() {
                     <Link
                       key={type}
                       href={`/practice?subject=${subject.id}&type=${type}`}
-                      className="p-2.5 rounded-2xl bg-white/50 dark:bg-slate-700/50 hover:bg-white/80 dark:hover:bg-slate-700 transition-colors text-sm font-medium text-slate-700 dark:text-slate-300"
+                      className="p-2.5 rounded-2xl bg-white/40 dark:bg-white/10 hover:bg-white/70 dark:hover:bg-white/20 transition-colors text-sm font-medium text-slate-700 dark:text-slate-300"
                     >
                       {type.replace(/_/g, " ").replace(/nvr /g, "").split(' ').map(word =>
                         word.charAt(0).toUpperCase() + word.slice(1)

@@ -285,7 +285,7 @@ export default function AchievementsPage() {
   const totalCount = achievements.length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 p-6">
+    <div className="p-6">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -320,7 +320,7 @@ export default function AchievementsPage() {
               {Math.round((unlockedCount / totalCount) * 100)}%
             </span>
           </div>
-          <div className="h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+          <div className="h-3 bg-white/40 dark:bg-white/10 rounded-full overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full transition-all duration-500"
               style={{ width: `${(unlockedCount / totalCount) * 100}%` }}

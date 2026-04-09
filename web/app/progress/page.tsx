@@ -305,7 +305,7 @@ export default function ProgressPage() {
                           {item.accuracy}%
                         </span>
                       </div>
-                      <div className="w-full h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                      <div className="w-full h-2 bg-white/30 dark:bg-white/10 rounded-full overflow-hidden">
                         <div
                           className={`h-full rounded-full transition-all duration-300 ${
                             item.accuracy >= 80 ? "bg-green-500" :
@@ -347,7 +347,7 @@ export default function ProgressPage() {
                     className={`p-4 rounded-lg border ${
                       isWeak
                         ? "bg-red-50 dark:bg-red-900/10 border-red-200 dark:border-red-800"
-                        : "bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600"
+                        : "bg-white/30 dark:bg-white/10 border-slate-200 dark:border-slate-600"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">

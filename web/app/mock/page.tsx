@@ -205,7 +205,7 @@ export default function MockExamPage() {
   // Setup screen
   if (examState === "setup") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 p-6">
+      <div className="p-6">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="flex items-center gap-3 mb-8">
@@ -237,17 +237,17 @@ export default function MockExamPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-4 mb-8">
-              <div className="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4 text-center">
+              <div className="bg-white/30 dark:bg-white/10 rounded-xl p-4 text-center">
                 <Target className="w-8 h-8 text-blue-500 mx-auto mb-2" />
                 <p className="text-2xl font-bold text-slate-900 dark:text-white">{EXAM_QUESTIONS}</p>
                 <p className="text-xs text-slate-500 dark:text-slate-400">Questions</p>
               </div>
-              <div className="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4 text-center">
+              <div className="bg-white/30 dark:bg-white/10 rounded-xl p-4 text-center">
                 <Clock className="w-8 h-8 text-orange-500 mx-auto mb-2" />
                 <p className="text-2xl font-bold text-slate-900 dark:text-white">45</p>
                 <p className="text-xs text-slate-500 dark:text-slate-400">Minutes</p>
               </div>
-              <div className="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-4 text-center">
+              <div className="bg-white/30 dark:bg-white/10 rounded-xl p-4 text-center">
                 <Trophy className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
                 <p className="text-2xl font-bold text-slate-900 dark:text-white">{EXAM_QUESTIONS}</p>
                 <p className="text-xs text-slate-500 dark:text-slate-400">Max Marks</p>
@@ -289,12 +289,12 @@ export default function MockExamPage() {
           {/* Past Results */}
           {pastResults.length > 0 && (
             <div className="glass-card-sm p-6">
-              </h3>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-4">Past Results</h3>
               <div className="space-y-3">
                 {pastResults.slice(0, 5).map((r, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg"
+                    className="flex items-center justify-between p-4 bg-white/30 dark:bg-white/10 rounded-lg"
                   >
                     <div>
                       <p className="font-medium text-slate-900 dark:text-white">
@@ -479,7 +479,7 @@ export default function MockExamPage() {
         : "Needs Improvement";
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/20 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 p-6">
+      <div className="p-6">
         <div className="max-w-4xl mx-auto">
           {/* Results Header */}
           <div className="glass-card p-8 shadow-lg mb-6 text-center">
@@ -531,7 +531,7 @@ export default function MockExamPage() {
                         {data.correct}/{data.total} ({subjectPct}%)
                       </span>
                     </div>
-                    <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                    <div className="h-2 bg-white/40 dark:bg-white/10 rounded-full overflow-hidden">
                       <div
                         className={`h-full rounded-full ${
                           subjectPct >= 75

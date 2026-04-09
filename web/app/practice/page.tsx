@@ -601,7 +601,7 @@ function PracticeContent() {
       {/* Question Card */}
       <div className="glass-card overflow-hidden">
         {/* Question Header */}
-        <div className="bg-slate-50 dark:bg-slate-700/50 px-6 py-4 flex justify-between items-center">
+        <div className="bg-white/30 dark:bg-white/10 px-6 py-4 flex justify-between items-center">
           <div className="flex flex-wrap gap-2">
             <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getSubjectColor(currentQuestion.subject)}`}>
               {getSubjectName(currentQuestion.subject)}
@@ -654,7 +654,7 @@ function PracticeContent() {
               return (
                 <div className="mb-8">
                   <p className="text-lg text-slate-900 dark:text-white mb-4">{parsed.instruction}</p>
-                  <div className="flex items-center gap-3 flex-wrap justify-center bg-slate-50 dark:bg-slate-700/50 p-4 rounded-xl">
+                  <div className="flex items-center gap-3 flex-wrap justify-center bg-white/30 dark:bg-white/10 p-4 rounded-xl">
                     {parsed.sequence.map((svg, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <SVGRenderer svg={svg} className="w-16 h-16" />
@@ -674,7 +674,7 @@ function PracticeContent() {
               return (
                 <div className="mb-8">
                   <p className="text-lg text-slate-900 dark:text-white mb-4">{parsed.instruction}</p>
-                  <div className="flex items-center gap-4 flex-wrap justify-center bg-slate-50 dark:bg-slate-700/50 p-4 rounded-xl">
+                  <div className="flex items-center gap-4 flex-wrap justify-center bg-white/30 dark:bg-white/10 p-4 rounded-xl">
                     {parsed.shapes.map((svg, i) => (
                       <div key={i} className="text-center">
                         <SVGRenderer svg={svg} className="w-16 h-16 mx-auto" />
@@ -690,7 +690,7 @@ function PracticeContent() {
               return (
                 <div className="mb-8">
                   <p className="text-lg text-slate-900 dark:text-white mb-4">{parsed.instruction}</p>
-                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-xl">
+                  <div className="bg-white/30 dark:bg-white/10 p-4 rounded-xl">
                     <div className="flex items-center gap-3 justify-center flex-wrap">
                       <SVGRenderer svg={parsed.pair1[0]} className="w-16 h-16" />
                       <span className="text-slate-500 font-medium">is to</span>
@@ -709,7 +709,7 @@ function PracticeContent() {
               return (
                 <div className="mb-8">
                   <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-3">{parsed.title}</h3>
-                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-xl mb-4 max-h-64 overflow-y-auto">
+                  <div className="bg-white/30 dark:bg-white/10 p-4 rounded-xl mb-4 max-h-64 overflow-y-auto">
                     <p className="text-slate-700 dark:text-slate-300 whitespace-pre-line leading-relaxed text-sm">{parsed.passage}</p>
                   </div>
                   <p className="text-lg text-slate-900 dark:text-white font-medium">{parsed.question}</p>
