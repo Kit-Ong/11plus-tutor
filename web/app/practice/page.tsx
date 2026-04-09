@@ -2,6 +2,11 @@
 
 import { useState, useEffect, useCallback, Suspense, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import "katex/dist/katex.min.css";
+import { processLatexContent } from "@/lib/latex";
 import {
   Clock,
   CheckCircle2,
@@ -721,9 +726,14 @@ function PracticeContent() {
             return (
               <div className="mb-8">
                 {currentQuestion.question_type === 'code_words' && <AlphabetHelper />}
-                <p className="text-lg text-slate-900 dark:text-white whitespace-pre-line leading-relaxed">
-                  {currentQuestion.question_text}
-                </p>
+                <div className="text-lg text-slate-900 dark:text-white leading-relaxed prose prose-slate dark:prose-invert max-w-none">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkMath]}
+                    rehypePlugins={[rehypeKatex]}
+                  >
+                    {processLatexContent(currentQuestion.question_text)}
+                  </ReactMarkdown>
+                </div>
               </div>
             );
           })()}
@@ -810,7 +820,11 @@ function PracticeContent() {
                           String.fromCharCode(65 + idx)
                         )}
                       </span>
-                      <span className="flex-1 text-slate-900 dark:text-white">{option}</span>
+                      <span className="flex-1 text-slate-900 dark:text-white prose prose-slate dark:prose-invert max-w-none prose-p:my-0">
+                        <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                          {processLatexContent(option)}
+                        </ReactMarkdown>
+                      </span>
                     </>
                   )}
                 </button>
@@ -846,7 +860,11 @@ function PracticeContent() {
               {result.worked_solution && (
                 <div className="mt-3 pt-3 border-t border-current/10">
                   <p className="font-medium text-slate-700 dark:text-slate-300 mb-1">Explanation:</p>
-                  <p className="text-slate-600 dark:text-slate-400">{result.worked_solution}</p>
+                  <div className="text-slate-600 dark:text-slate-400 prose prose-slate dark:prose-invert max-w-none">
+                    <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                      {processLatexContent(result.worked_solution)}
+                    </ReactMarkdown>
+                  </div>
                 </div>
               )}
             </div>
