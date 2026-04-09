@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  // When BASE_PATH is set (e.g. in production), serve under that prefix
+  ...(process.env.BASE_PATH ? { basePath: process.env.BASE_PATH } : {}),
+
   // Hide dev indicator (the "N" in corner) - cleaner for non-technical users
   devIndicators: false,
 
